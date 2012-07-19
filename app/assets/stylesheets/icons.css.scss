@@ -1,5 +1,5 @@
 $icons-spacing:20px;
-$icons-collapse-spacing:6px;
+$icons-collapse-spacing:8px;
 @import "icons/*.png";
 @include all-icons-sprites;
 
@@ -9,6 +9,7 @@ $icons-collapse-spacing:6px;
   padding:0;
   display:inline-block;
   text-indent:-9999px;
+  margin: 0 2px 0 0
 }
 
 .icons-throbber{

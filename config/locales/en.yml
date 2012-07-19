@@ -75,9 +75,9 @@ en:
 
     show:
       done: "Done"
-      in_progress: "In Progress"
-      backlog: "Backlog"
-      icebox: "Chilly Bin"
+      in_progress: "CURRENT"
+      backlog: "BACKLOG"
+      icebox: "ICEBOX"
 
   registrations:
     edit:

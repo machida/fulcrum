@@ -1,3 +1,4 @@
+@import compass/reset
 @import compass/css3
 @import scaffold
 @import jquery_gritter
@@ -50,11 +51,9 @@ a img
   border: 0
 
 #header
-  background: $darkgrey
-  +background(linear-gradient(top, $darkgrey, $darkgrey * 0.75))
+  background: #07396b
   border-bottom: 1px solid $darkgrey * 0.7
   +box-shadow(0 1px 2px #aaaaaa)
-  text-shadow: #222 0 -1px 0
   position: relative
   z-index: 900
 
@@ -65,15 +64,16 @@ ul#primary-nav
   background-position: 13px 6px
   margin: 0
   padding: 1em 1em 1em 40px
-  color: white
 
 ul#primary-nav li
-  padding: 0 0.5em
+  padding: 0 0 0 0.8em
   display: inline
 
-ul#primary-nav li a
-  color: white
-  text-decoration: none
+ul#primary-nav li
+  a
+    color: white
+    text-decoration: none
+    
 
 ul#primary-nav li.root
   float: left
@@ -81,12 +81,22 @@ ul#primary-nav li.root
 
 ul#primary-nav li.secondary
   position: relative
-  +icons-sprite(collapse, false, 0px, 6px)
-  background-color: #000
+  background-image: image-url("coll.png")
+  background-repeat: no-repeat
+  background-position-y: center
   background-position-x: right
-  padding: 0.4em 22px 0.4em 0.6em
-  +border-radius(5px)
-  text-shadow: black 0 1px 0
+  padding: 0.4em 14px 0.4em 0.6em
+  &:hover,
+  &:active
+    color: #000
+    background: #fff
+    +border-radius(4px 4px 0 0)
+    background-image: image-url("coll_hover.png")
+    background-repeat: no-repeat
+    background-position-y: center
+    background-position-x: right
+    a
+      color: #000
 
 ul#primary-nav li.secondary ul
   visibility: hidden
@@ -99,19 +109,20 @@ ul#primary-nav li.secondary ul
   position: absolute
   left: 0
   top: 1.7em
-  background-color: #333
-  +border-radius(0 5px 5px 5px)
+  background-color: #fff
+  +border-radius(0 4px 4px 4px)
 
 ul#primary-nav li.secondary ul li
   white-space: nowrap
   text-align: left
   display: block
+  padding: 0.4em 0.8em
+  a
+    color: #000
 
 #title_bar
   background: #efefef
-  +background(linear-gradient(top, #efefef, #dfe1e2))
   +box-shadow(0 1px 2px #aaaaaa)
-  text-shadow: white 0 1px 0
   border-bottom: 1px solid #ededed
   padding: 5px 10px 3px 10px
   font-size: 1.0em
@@ -159,8 +170,8 @@ ul#primary-nav li.secondary ul li
     text-decoration: none
 
 #title_bar h1
-  font-size: 2em
-  margin: 0.3em 0 0.5em 0
+  font-size: 1.6em
+  margin: 0 0 0.5em 0
   font-weight: normal
 
 #main
@@ -170,21 +181,26 @@ ul#primary-nav li.secondary ul li
 html.stories, html.stories body, html.stories div#main
   height: 100%
 
-#column-toggles
+.nav
   float: right
+#column-toggles
+  float: left
+  padding: 0 10px 0 0
 
 #column-toggles a
-  margin: 0 0.2em
+  margin: 0 0.3em
   padding: 3px 8px
-  color: white
-  background-color: $darkgrey
+  color: #023463
+  background-color: #fff
   +border-radius(3px)
   text-decoration: none
   text-shadow: none
+  font-size: 11px
+  font-weight: bold
 
 #column-toggles a.pressed
-  color: $darkgrey
-  background-color: #cecece
+  color: #bbb
+  background-color: #efefef
 
 table.stories
   width: 100%
@@ -193,23 +209,22 @@ table.stories
 
 table.stories td
   vertical-align: top
-  background-color: #ccc
+  background-color: #fff
   +border-radius(4px 4px 0 0)
-  background: image-url("stories_td.gif")
+  padding: 0 10px 0 0
 
 div.storycolumn
   overflow: auto
   padding-bottom: 80px
+  background: image-url("stories_td.gif")
 
 .column_header
-  text-align: center
+  text-align: left
   background:  #000
   color: #eee
-  padding: 0.5em 0.3em
+  padding: 0.3em 0.4em 0.3em 0.8em
   font-weight: bold
   +border-radius(5px 5px 0 0)
-  border: #666 solid 1px
-  margin: -1px 0 0 0
   a.toggle-column
     color: #eee
     text-decoration: none
@@ -224,7 +239,7 @@ div.story
   background-repeat: no-repeat
   background-position: 4px 4px
   background-color: #eee
-  border-bottom: 1px solid #ddd
+  border-bottom: 1px solid #ccc
   border-top: 1px solid #fff
 
 div.story:hover
@@ -250,13 +265,13 @@ div.story-icons
   float: left
 
 div.story-title
-  margin-left: 65px
+  margin-left: 60px
 
 .unestimated div.story-title
   font-style: italic
 
 div.story-title abbr.initials
-  color: green
+  color: #07396b
   font-weight: bold
   margin-left: 0.2em
   border: none
@@ -311,16 +326,16 @@ span.estimate_8
 
 .state-actions
   float: right
-  margin-left: 0.2em
+  margin-left: 0.4em
 
 .state-actions form div, .state-actions form
   display: inline
 
 .iteration
-  +icons-sprite(iteration, false, 2px, 5px)
-  background-color: #023463
-  color: #ddd
-  padding: 0.5em 0.3em 0.5em 22px
+  +icons-sprite(iteration, false, 6px, 6px)
+  background-color: #07396b
+  color: #ccc
+  padding: 0.5em 0.5em 0.5em 26px
 
 .iteration .points
   float: right
@@ -329,14 +344,13 @@ span.estimate_8
   margin: 0
   padding: 0 0.3em
   +border-radius(3px)
-  border: 1px solid #333
+  border: 1px solid #999
   cursor: pointer
   font-size: small
-  color: white
-  +background(linear-gradient(top, $aluminium-3, $aluminium-3 * 0.75))
-  border-color: $aluminium-5
-  text-shadow: $aluminium-5 0 -1px 0
-  +box-shadow(0 1px 2px #aaaaaa)
+  color: #000
+  +box-shadow(0 1px 1px #aaaaaa, #eee 0 1px 1px inset)
+  &:hover
+    background: #dbdb00
 
 .story.release .state-actions input
   +box-shadow(0 1px 2px black)
@@ -386,6 +400,8 @@ ul#projects
     margin: 10px 0
     padding: 18px 12px
     border: 1px solid #ccc
+    h2
+      font-size: 1.6em
     div.project_options
       float: right
       a
@@ -438,7 +454,7 @@ a.button:hover
   text-shadow: $darkgrey 0 1px 0
 
 .tags
-  color: $sky-blue-3
+  color: #BBA11B
   font-size: 90%
 
 .popover
