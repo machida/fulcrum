@@ -4,9 +4,9 @@
 en:
   fulcrum:  "Fulcrum"
 
-  log out:  "Log out"
-  log in:   "Log in"
-  sign up:  "Sign up"
+  log out:  "Logout"
+  log in:   "Login"
+  sign up:  "Signup"
   edit:     "Edit"
   delete:   "Delete"
   back:     "Back"
@@ -74,7 +74,7 @@ en:
         other:  "Iterations start on %{day} with a length of %{count} weeks"
 
     show:
-      done: "Done"
+      done: "DONE"
       in_progress: "CURRENT"
       backlog: "BACKLOG"
       icebox: "ICEBOX"

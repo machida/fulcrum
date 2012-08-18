@@ -1,4 +1,5 @@
 @import compass/reset
+@import compass/utilities
 @import compass/css3
 @import scaffold
 @import jquery_gritter
@@ -46,14 +47,15 @@ $aluminium-6: #2e3436
 body
   margin: 0
   padding: 0
+  background: image_url("body.gif") #f8f8f2
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif
 
 a img
   border: 0
 
 #header
-  background: #07396b
-  border-bottom: 1px solid $darkgrey * 0.7
-  +box-shadow(0 1px 2px #aaaaaa)
+  background: #27292c
+  +box-shadow(0 1px 2px rgba(0, 0, 0, 1) inset)
   position: relative
   z-index: 900
 
@@ -77,7 +79,9 @@ ul#primary-nav li
 
 ul#primary-nav li.root
   float: left
-  font-size: large
+  font:
+    size: 24px
+    family: 'Chango', cursive
 
 ul#primary-nav li.secondary
   position: relative
@@ -121,19 +125,22 @@ ul#primary-nav li.secondary ul li
     color: #000
 
 #title_bar
-  background: #efefef
-  +box-shadow(0 1px 2px #aaaaaa)
-  border-bottom: 1px solid #ededed
-  padding: 5px 10px 3px 10px
+  background: #c4c4a2 image_url("title_bar.gif")
+  border:
+    bottom: 1px solid #f9f9f9
+  padding: 12px 1em 0 1em
   font-size: 1.0em
   line-height: 140%
   margin-bottom: 0.5em
   color: #000
   position: relative
   margin: 0
-  padding: 10px 1em
+  +clearfix
   div.velocity
-    font-size: 1.6em
+    font:
+      size: 14px
+      family: 'Chivo', sans-serif
+      weight: bold
     float: right
     position: relative
     div.velocity_override_container
@@ -153,26 +160,37 @@ ul#primary-nav li.secondary ul li
           list-style-type: none
     #velocity_value
       cursor: pointer
+      font:
+        size: 24px
   div.velocity.fake #velocity_value
     color: #f00
     font-style: italic
   #add_story
-    +background(sprite($icons-sprites, feature, 2, 2), linear-gradient(top, $aluminium-3, $aluminium-3 * 0.75))
-    background-repeat: no-repeat
-    margin: 0
-    padding: 0.2em 0.6em 0.2em 22px
+    background-color: #0d4277
+    @include filter-gradient(#0d4277, #02305e, vertical)
+    $experimental-support-for-svg: true
+    @include background-image(linear-gradient(top,  #0d4277 0%,#02305e 100%))
+    padding: 0.2em 0.6em
     +border-radius(3px)
-    border: 1px solid $aluminium-5
+    border: 1px solid #1D2942
     cursor: pointer
-    font-size: small
+    font:
+      size: small
+      weight: bold
     color: white
     text-shadow: $aluminium-5 0 -1px 0
     text-decoration: none
+    float: right
+    i
+      margin: 0 4px 0 0
 
 #title_bar h1
-  font-size: 1.6em
-  margin: 0 0 0.5em 0
-  font-weight: normal
+  font:
+    size: 24px
+    family: 'Chivo', sans-serif
+    weight: bold
+  margin: 0 0 12px 0
+  float: left
 
 #main
   margin: 1em
@@ -182,15 +200,36 @@ html.stories, html.stories body, html.stories div#main
   height: 100%
 
 .nav
-  float: right
-#column-toggles
+  padding: 6px 0 0 0
+  clear: both
   float: left
-  padding: 0 10px 0 0
+  position: relative
+  z-index: 100
+  margin: 0 0 -1px 0
+  li
+    +inline-block
+    background: image_url("body.gif") #F8F8F2
+    line-height: 32px
+    padding: 0 14px
+    +border-top-radius(4px)
+    font-weight: bold
+    a
+      margin: 0 -14px
+      padding: 0 14px
+      line-height: 32px
+      background: #27292c
+      display: block
+      color: #fff
+      text-decoration: none
+      +border-top-radius(4px)
+#column-toggles
+  padding: 0 0 0 20px
+  float: left
 
 #column-toggles a
   margin: 0 0.3em
-  padding: 3px 8px
-  color: #023463
+  padding: 3px 10px
+  color: #27292c
   background-color: #fff
   +border-radius(3px)
   text-decoration: none
@@ -209,7 +248,6 @@ table.stories
 
 table.stories td
   vertical-align: top
-  background-color: #fff
   +border-radius(4px 4px 0 0)
   padding: 0 10px 0 0
 
@@ -220,7 +258,7 @@ div.storycolumn
 
 .column_header
   text-align: left
-  background:  #000
+  background: #27292c
   color: #eee
   padding: 0.3em 0.4em 0.3em 0.8em
   font-weight: bold
@@ -263,6 +301,20 @@ div.story textarea
 
 div.story-icons
   float: left
+  padding: 0 4px 0 0
+  a.expand
+    text-decoration: none
+    margin: 0
+    i
+      font-size: 16px
+      width: 10px
+      margin: 0 0 0 4px
+      color: #000
+  i.icon-details
+    padding: 0 4px 0 0
+
+.popover-activate
+  margin: 0 0 0 -4px
 
 div.story-title
   margin-left: 60px
@@ -287,7 +339,7 @@ div.story-title abbr.initials
 span.estimate
   border: 1px solid #777
   padding: 0 0.2em
-  margin: 0 2px 0 0
+  margin: 0 6px 0 0
   +border-radius(3px)
   vertical-align: top
   font-size: x-small
@@ -332,17 +384,23 @@ span.estimate_8
   display: inline
 
 .iteration
-  +icons-sprite(iteration, false, 6px, 6px)
   background-color: #07396b
   color: #ccc
-  padding: 0.5em 0.5em 0.5em 26px
+  padding: 0.5em 0.5em
+  border:
+    bottom: solid 1px #03294f
+  i
+    margin: 0 5px 0 0
+    color: #fff
+    font:
+      size: 16px
 
 .iteration .points
   float: right
 
 .state-actions input
   margin: 0
-  padding: 0 0.3em
+  padding: 2px 0.4em
   +border-radius(3px)
   border: 1px solid #999
   cursor: pointer
@@ -375,10 +433,9 @@ span.estimate_8
   border-color: $scarlet-red-3
 
 .state-actions input.restart
-  +background(sprite($icons-sprites, redo), linear-gradient(top, $scarlet-red-1, $scarlet-red-1 * 0.75))
+  +background(linear-gradient(top, $scarlet-red-1, $scarlet-red-1 * 0.75))
   background-repeat: no-repeat
   border-color: $scarlet-red-3
-  padding-left: 16px
 
 table#import tr.valid, .notice
   color: white
@@ -393,15 +450,21 @@ ul#projects
   width: 50%
   padding-left: 0
   li
-    background: #efefef
-    +background(linear-gradient(top, #efefef, #dfe1e2))
-    +box-shadow(0 1px 1px #fff inset)
-    text-shadow: #eee 0 1px 0
-    margin: 10px 0
+    background: rgba(255, 255, 255, 1)
+    margin: 10px 0 20px 0
     padding: 18px 12px
-    border: 1px solid #ccc
+    +border-radius(4px)
+    +box-shadow(rgba(0, 0, 0, .1) 0 1px 1px)
     h2
-      font-size: 1.6em
+      margin: 0 0 6px 0
+      font:
+        size: 24px
+        family: 'Chivo', sans-serif
+        weight: bold
+      span
+        font:
+          size: 14px
+        margin: 0 0 0 10px
     div.project_options
       float: right
       a
@@ -429,14 +492,6 @@ ul#projects
       &:active
         text-decoration: underline
 
-ul#projects li h2
-  display: inline
-
-
-
-ul#projects li:hover
-  background-color: #babdb6
-
 a.button
   background: #efefef
   +background(linear-gradient(top, #efefef, #dfe1e2))
@@ -455,7 +510,9 @@ a.button:hover
 
 .tags
   color: #BBA11B
-  font-size: 90%
+  font:
+    size: 90%
+    weight: bold
 
 .popover
   p
