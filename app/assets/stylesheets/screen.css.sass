@@ -21,6 +21,8 @@ $red: #63022D
 $white: #EEE
 $green: #286b0b
 $light_blue: #5697CA
+$white_blue: #D3F3FF
+$yellow: #BBA11B
 
 
 // Tango icon theme pallette
@@ -312,20 +314,33 @@ div.story:hover
   background-color: #ddd
 
 div.story.editing, div.story.editing:hover
-  background-color: adjust-lightness($butter-1, 20)
-  color: $aluminium-6
+  background-color: $white_blue
+  color: $black
 
 div.story.feature.accepted,
 div.story.bug.accepted,
 div.story.chore.accepted
   background-color: adjust-lightness($chameleon-1, 40)
 
-div.story input[type=text],
-div.story textarea
-  width: 99%
-
-div.story textarea
-  height: 50px
+div.story
+  div
+    margin: 0 0 8px 0
+  label
+    font:
+      size: 12px
+      weight: bold
+    margin: 0 8px 0 0
+  textarea
+    height: 50px
+  input[type=text],
+  textarea
+    width: 94%
+    +border-radius(4px)
+    border: $black + 100 solid 1px
+    padding: 4px 6px
+  .tagit-new
+    input
+      border: none
 
 div.story-icons
   float: left
@@ -541,7 +556,7 @@ a.button:hover
   text-shadow: $darkgrey 0 1px 0
 
 .tags
-  color: #BBA11B
+  color: $yellow
   font:
     size: 90%
     weight: bold
@@ -551,6 +566,9 @@ a.button:hover
     margin-top: 0px
   .title
     margin: 0px
+    font:
+      weight: bold
+    line-height: 1.4
   .inner
     padding: 2px
   .content
@@ -561,9 +579,13 @@ a.button:hover
     padding-left: 15px
     margin: 0 10px 10px 0
     .icons
-      float: right
       .text
         vertical-align: top
+        color: $yellow
+        font:
+          weight: bold
+  .requested
+    display: block
   .description
     padding: 10px 15px 0px
 

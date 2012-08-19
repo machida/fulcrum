@@ -252,7 +252,7 @@ Fulcrum.StoryView = Fulcrum.FormView.extend({
         this.makeFormControl(function(div) {
           if (!this.model.isNew()) {
             $(div).append(
-              this.make("a", {'class': "collapse icon icons-collapse"})
+              this.make("a", {'class': "collapse"},"<i class='icon-remove'></i>close")
             );
           }
           $(div).append(this.textField("title", {
@@ -400,7 +400,7 @@ Fulcrum.StoryView = Fulcrum.FormView.extend({
     if (this.model.notes.length > 0) {
       var el = this.$el;
       el.append('<hr/>');
-      el.append('<h3>' + I18n.t('notes') + '</h3>');
+      el.append('<h3>Activity</h3>');
       el.append('<div class="notelist"/>');
       this.renderNotesCollection();
     }
@@ -503,8 +503,7 @@ Fulcrum.StoryView = Fulcrum.FormView.extend({
     } else if (typeof content == 'object') {
       var $div = $(div);
       if (content.label) {
-        $div.append(this.label(content.name));
-        $div.append('<br/>');
+        $div.append(this.label(content.name, content.label));
       }
       $div.append(content.control);
     }
