@@ -12,7 +12,7 @@
     I18n.fallbacks = true;
   </script>
 </head>
-<body>
+<body class="<%= "#{controller_name} #{controller_name}_#{action_name}" %>">
 
 <div id="header">
   <ul id="primary-nav">
@@ -20,6 +20,7 @@
     <% if current_user %>
       <li<%= ' class="secondary"'.html_safe if current_user.projects.present? %>>
         <%= link_to Project.model_name.human.pluralize, root_path %>
+        <i class="icon-caret-down"></i>
         <%- if current_user.projects.present? -%>
           <ul>
             <%- current_user.projects.each do |project| -%>
@@ -28,13 +29,13 @@
           </ul>
         <%- end %>
       </li>
-      <li><%= link_to current_user.email, edit_user_registration_path %></li>
-      <li><%= link_to t('log out'), destroy_user_session_path,
-                      :method => :delete %></li>
+      <li><span class="user_icon"><%= image_tag current_user.gravatar_url %></span><%= link_to current_user.email, edit_user_registration_path %></li>
+      <li class="login"><%= link_to t('log out'), destroy_user_session_path,
+                      :method => :delete %><i class="icon-signout"></i></li>
     <% else %>
-      <li><%= link_to t('log in'), new_user_session_path %></li>
+      <li class="login"><%= link_to t('log in'), new_user_session_path %><i class="icon-signin"></i></li>
       <%- unless Fulcrum::Application.config.fulcrum.disable_registration %>
-      <li><%= link_to t('sign up'), new_user_registration_path %></li>
+      <li class="login"><%= link_to t('sign up'), new_user_registration_path %><i class="icon-signin"></i></li>
       <% end -%>
     <% end %>
   </ul>

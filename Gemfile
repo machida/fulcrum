@@ -19,6 +19,8 @@ gem 'transitions', '0.0.9', :require => ["transitions", "active_record/transitio
 gem 'i18n-js'
 gem 'configuration'
 
+gem 'gravtastic'
+
 gem 'fastercsv', '1.5.3', :platforms => :ruby_18
 # (using standard csv lib if ruby version is 1.9)
 

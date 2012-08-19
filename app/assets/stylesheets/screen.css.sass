@@ -14,6 +14,15 @@ $orange: rgb(250, 182, 155)
 
 // Estimate gauge color
 
+
+$black: #27292C
+$blue: #07396B
+$red: #63022D
+$white: #EEE
+$green: #286b0b
+$light_blue: #5697CA
+
+
 // Tango icon theme pallette
 // http://tango.freedesktop.org/Tango_Icon_Theme_Guidelines
 $butter-1: #fce94f
@@ -37,7 +46,7 @@ $plum-3: #5c3566
 $scarlet-red-1: #ef2929
 $scarlet-red-2: #cc0000
 $scarlet-red-3: #a40000
-$aluminium-1: #eeeeec
+$aluminium-1: #eee
 $aluminium-2: #d3d7cf
 $aluminium-3: #babdb6
 $aluminium-4: #888a85
@@ -53,19 +62,42 @@ body
 a img
   border: 0
 
+.users_index,
+.projects_edit
+  #main
+    h2
+      margin: 0 0 12px 0
+      font:
+        size: 20px
+        family: "Chivo", sans-serif
+        weight: bold
+
+.users_index
+  #main
+    ul
+      margin: 0 0 20px 40px
+      li
+        display: block
+        margin: 0 0 8px 0
+
 #header
-  background: #27292c
-  +box-shadow(0 1px 2px rgba(0, 0, 0, 1) inset)
+  background: $black
+  +box-shadow(0 1px 2px rgba(0, 0, 0, .3) inset)
   position: relative
   z-index: 900
 
 ul#primary-nav
   text-align: right
   background-image: image-url("logo.png")
+  background-size: 35px auto
   background-repeat: no-repeat
   background-position: 13px 6px
   margin: 0
-  padding: 1em 1em 1em 40px
+  padding: 1em 1em 1em 38px
+  li.login
+    i
+      color: #fff
+      margin: 0 0 0 4px
 
 ul#primary-nav li
   padding: 0 0 0 0.8em
@@ -85,20 +117,16 @@ ul#primary-nav li.root
 
 ul#primary-nav li.secondary
   position: relative
-  background-image: image-url("coll.png")
-  background-repeat: no-repeat
-  background-position-y: center
-  background-position-x: right
-  padding: 0.4em 14px 0.4em 0.6em
+  padding: 0.4em 0.6em
+  i
+    color: #fff
   &:hover,
   &:active
     color: #000
     background: #fff
     +border-radius(4px 4px 0 0)
-    background-image: image-url("coll_hover.png")
-    background-repeat: no-repeat
-    background-position-y: center
-    background-position-x: right
+    i
+      color: #000
     a
       color: #000
 
@@ -125,7 +153,7 @@ ul#primary-nav li.secondary ul li
     color: #000
 
 #title_bar
-  background: #c4c4a2 image_url("title_bar.gif")
+  background: $light_blue image_url("title_bar.gif")
   border:
     bottom: 1px solid #f9f9f9
   padding: 12px 1em 0 1em
@@ -166,19 +194,19 @@ ul#primary-nav li.secondary ul li
     color: #f00
     font-style: italic
   #add_story
-    background-color: #0d4277
-    @include filter-gradient(#0d4277, #02305e, vertical)
+    background-color: $black
+    @include filter-gradient($black + 20, $black - 20, vertical)
     $experimental-support-for-svg: true
-    @include background-image(linear-gradient(top,  #0d4277 0%,#02305e 100%))
+    @include background-image(linear-gradient(top,  $black + 20 0%,$black - 20 100%))
     padding: 0.2em 0.6em
     +border-radius(3px)
-    border: 1px solid #1D2942
+    border: 1px solid $black - 30
     cursor: pointer
     font:
-      size: small
+      size: 14px
       weight: bold
     color: white
-    text-shadow: $aluminium-5 0 -1px 0
+    text-shadow: $blue - 40 0 -1px 0
     text-decoration: none
     float: right
     i
@@ -217,7 +245,7 @@ html.stories, html.stories body, html.stories div#main
       margin: 0 -14px
       padding: 0 14px
       line-height: 32px
-      background: #27292c
+      background: $black
       display: block
       color: #fff
       text-decoration: none
@@ -259,12 +287,12 @@ div.storycolumn
 .column_header
   text-align: left
   background: #27292c
-  color: #eee
+  color: $white
   padding: 0.3em 0.4em 0.3em 0.8em
   font-weight: bold
   +border-radius(5px 5px 0 0)
   a.toggle-column
-    color: #eee
+    color: $white
     text-decoration: none
     float: right
     padding: 0px 5px 1px
@@ -276,7 +304,7 @@ div.story
   padding: 0.5em 0.3em
   background-repeat: no-repeat
   background-position: 4px 4px
-  background-color: #eee
+  background-color: $white
   border-bottom: 1px solid #ccc
   border-top: 1px solid #fff
 
@@ -323,7 +351,7 @@ div.story-title
   font-style: italic
 
 div.story-title abbr.initials
-  color: #07396b
+  color: $light_blue
   font-weight: bold
   margin-left: 0.2em
   border: none
@@ -371,8 +399,10 @@ span.estimate_8
   +background(linear-gradient(bottom, $orange 100%, white 100%))
 
 .story.release
-  background-color: #63022d
+  background-color: $red
   color: white
+  border:
+    top: #990042 1px solid
   &:hover
     background-color: #7e0139
 
@@ -384,7 +414,7 @@ span.estimate_8
   display: inline
 
 .iteration
-  background-color: #07396b
+  background-color: $blue
   color: #ccc
   padding: 0.5em 0.5em
   border:
@@ -400,13 +430,15 @@ span.estimate_8
 
 .state-actions input
   margin: 0
-  padding: 2px 0.4em
+  padding: 1px 0.4em
   +border-radius(3px)
   border: 1px solid #999
   cursor: pointer
-  font-size: small
   color: #000
-  +box-shadow(0 1px 1px #aaaaaa, #eee 0 1px 1px inset)
+  font:
+    size: 12px
+    weight: bold
+  +box-shadow(0 1px 0 rgba(0, 0, 0, .4), rgba(255, 255, 255, .4) 0 1px 0 inset)
   &:hover
     background: #dbdb00
 
@@ -425,7 +457,7 @@ span.estimate_8
   border-color: $butter-3
 
 .state-actions input.accept
-  +background(linear-gradient(top, $chameleon-2, $chameleon-2 * 0.75))
+  +background(linear-gradient(top, $green + 100, $green + 50))
   border-color: $chameleon-3
 
 .state-actions input.reject
@@ -433,9 +465,9 @@ span.estimate_8
   border-color: $scarlet-red-3
 
 .state-actions input.restart
-  +background(linear-gradient(top, $scarlet-red-1, $scarlet-red-1 * 0.75))
+  +background(linear-gradient(top, $red + 100, $red + 50))
   background-repeat: no-repeat
-  border-color: $scarlet-red-3
+  border-color: $red + 50
 
 table#import tr.valid, .notice
   color: white

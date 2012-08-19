@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-
+  
+  include Gravtastic
+  gravtastic
+  
   # FIXME - DRY up, repeated in Story model
   JSON_ATTRIBUTES = ["id", "name", "initials", "email"]
 
