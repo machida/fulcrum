@@ -39,6 +39,7 @@
   <%= story.escape('title') %>
   <% if (story.owned_by()) { %>
     <abbr class="initials" title="<%= story.owned_by().escape('name') %>">
+      <img src="<%= get_gravatar(story.owned_by().escape('email'), 32) %>" />
       <%= story.owned_by().escape('initials') %>
     </abbr>
   <% } %>
