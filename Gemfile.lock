@@ -70,11 +70,11 @@ GEM
       railties (>= 3.0.0)
     fastercsv (1.5.3)
     ffi (1.0.11)
-    fssm (0.2.9)
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     fssm (0.2.8.1)
+    fssm (0.2.9)
     gravtastic (3.2.6)
     hike (1.2.1)
     i18n (0.6.1)
@@ -186,9 +186,9 @@ DEPENDENCIES
   ejs
   factory_girl_rails
   fastercsv (= 1.5.3)
-  i18n-js
   font-awesome-sass-rails
   gravtastic
+  i18n-js
   jasmine (= 1.1.0)
   jquery-rails
   pg
